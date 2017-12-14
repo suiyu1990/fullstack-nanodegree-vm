@@ -1,0 +1,35 @@
+<div class="col-md-2">
+	{% for category in categories %}
+		<a href = "{{url_for('showGame', category_id = category.id)}}">
+			<div class="row">
+				<div class="restaurant-list">
+					<h3>{{category.name}}</h3>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>
+
+<div class="col-md-1">
+	{% for category in categories %}
+		<a href = "{{url_for('editCategory', category_id = category.id)}}">
+			<div class="row">
+				<div class="restaurant-list">
+					<h3>Edit</h3>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>
+
+<div class="col-md-1">
+	{% for category in categories %}
+		<a href = "{{url_for('deleteCategory', category_id = category.id)}}">
+			<div class="row">
+				<div class="restaurant-list">
+					<h3>Delete</h3>
+				</div>
+			</div>
+		</a>
+	{% endfor %}
+</div>

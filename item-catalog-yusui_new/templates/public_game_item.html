@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "banner.html" %}
+<!-- /Update the new page layout for item and menus -->
+<div class="container">
+	<div class="row">
+		<!-- /The most recent item list -->
+		<div class="col-md-11">				
+			<div class="row">
+				<h3>Name: {{game.name}}</h3>
+				<h3>Description: {{game.description}}</h3>
+				<a href={{game.official_website}}>
+					<h3>Official Link: {{game.official_website}}</h3>
+				</a>		
+			</div>		
+		</div>
+	</div>
+<!-- /.container -->
+</div>
+{% endblock %}

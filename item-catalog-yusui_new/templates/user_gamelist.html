@@ -1,0 +1,83 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "banner.html" %}
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-2 padding-none">
+			<a href="{{url_for('editCategory', category_id = category.id)}}">
+				<button class="btn btn-default" id="new-restaurant">
+					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Edit Category
+				</button>
+			</a>					
+		</div>
+		<div class="col-md-2 padding-none">
+			<a href="{{url_for('deleteCategory', category_id = category.id)}}">
+				<button class="btn btn-default" id="new-restaurant">
+					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Delete Category
+				</button>
+			</a>					
+		</div>
+		<div class="col-md-1 padding-none"></div>
+		<div class="col-md-6 padding-none">
+			<a href="{{url_for('newGameItem', category_id = category.id)}}">
+				<button class="btn btn-default" id="new-restaurant">
+					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Add Game
+				</button>
+			</a>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+	
+<!-- /The location for displaying categories -->
+<div class="container">
+	<div class="row">
+		<!-- /The category list -->
+		<div class="col-md-3">
+			{% for c in categories %}
+				<a href = "{{url_for('showGame', category_id = c.id)}}">
+					<div class="row">
+						{% if c.id == category.id%}
+							<div class="restaurant-list">
+								<h2>{{c.name}}</h2>
+							</div>
+						{% endif %}
+						{% if c.id != category.id%}
+							<div class="restaurant-list">
+								<h3>{{c.name}}</h3>
+							</div>
+						{% endif %}
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+		<div class="col-md-1"></div>
+		<!-- /The most recent item list -->
+		<div class="col-md-7">
+			{% for game in games %}
+				<a href = "{{url_for('showGameItem', category_id = game.category.id, game_id = game.id)}}">			
+					<div class="row">
+						<div class="restaurant-list">
+							<h3>{{game.name}}</h3>
+						</div>
+					</div>
+				</a>		
+			{% endfor %}
+		</div>
+	</div>
+<!-- /.container -->
+</div>
+{% endblock %}

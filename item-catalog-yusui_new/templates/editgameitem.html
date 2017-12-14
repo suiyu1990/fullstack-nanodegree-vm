@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit Game Item</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method = "post">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{game.name}}">
+
+					<label for="description">Description:</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="description">{{game.description}}</textarea>
+					
+					<label for="website">Website:</label>
+					<input type ="text" maxlength="250" class="form-control" name="website" placeholder="http://">
+					
+					<div class="row padding-top"></div>
+					<label for "category">Category:</label>
+						<select name="category">
+							{% for c in categories %}
+							<option value="{{c.name}}">{{c.name}}</option>
+							{% endfor %}
+						</select>
+					<div class="row"></div>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+				</div>
+			</form>
+			<a href = '{{url_for("showGame", category_id = category_id)}}'>
+				<button class="btn btn-default delete">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+			</a>
+		</div>
+	</div>
+{% endblock %}

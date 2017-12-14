@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "banner.html" %}
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-5 padding-none">
+			<a href="{{url_for('editGameItem', category_id = game.category_id, game_id = game.id)}}">
+				<button class="btn btn-default" id="new-restaurant">
+					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Edit
+				</button>
+			</a>
+		</div>
+		<div class="col-md-5 padding-none">
+			<a href="{{url_for('deleteGameItem', category_id = game.category_id, game_id = game.id)}}">
+				<button class="btn btn-default" id="new-restaurant">
+					<span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>Delete
+				</button>
+			</a>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+<!-- /Update the new page layout for item and menus -->
+<div class="container">
+	<div class="row">
+		<!-- /The most recent item list -->
+		<div class="col-md-11">				
+			<div class="row">
+				<h3>Name: {{game.name}}</h3>
+				<h3>Description: {{game.description}}</h3>
+				<a href={{game.official_website}}>
+					<h3>Official Link: {{game.official_website}}</h3>
+				</a>		
+			</div>		
+		</div>
+	</div>
+<!-- /.container -->
+</div>
+{% endblock %}

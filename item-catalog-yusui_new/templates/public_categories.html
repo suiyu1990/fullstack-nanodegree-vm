@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{% include "banner.html" %}
+	<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+
+	
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 padding-none">
+			
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+	<!-- /Update the new page layout for item and menus -->
+<div class="container">
+	<div class="row">
+		<!-- /The restaurant list -->
+		{% include "category_list.html" %}
+		<div class="col-md-1"></div>
+		<!-- /The most recent item list -->
+		<div class="col-md-7">
+			{% for game in games %}
+				<a href = "{{url_for('showGameItem', category_id = game.category.id, game_id = game.id)}}">			
+					<div class="row">
+						<div class="restaurant-list">
+							<h3>{{game.name}}</h3>
+						</div>
+					</div>
+				</a>		
+			{% endfor %}
+		</div>
+	</div>
+<!-- /.container -->
+</div>
+{% endblock %}
